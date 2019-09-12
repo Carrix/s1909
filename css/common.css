@@ -2,5 +2,12 @@
 * @Author: Chris
 * @Date:   2019-09-12 17:38:41
 * @Last Modified by:   Chris
-* @Last Modified time: 2019-09-12 17:38:42
+* @Last Modified time: 2019-09-12 18:24:31
 */
+*{
+	margin: 0;
+	padding: 0;
+}
+li{
+	list-style: none;
+}

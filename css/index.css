@@ -2,5 +2,9 @@
 * @Author: Chris
 * @Date:   2019-09-12 17:38:31
 * @Last Modified by:   Chris
-* @Last Modified time: 2019-09-12 17:38:34
+* @Last Modified time: 2019-09-12 18:25:32
 */
+body{
+	width: 1920px;
+	height: 1080px;
+}
