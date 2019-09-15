@@ -2,7 +2,7 @@
 * @Author: Chris
 * @Date:   2019-09-12 17:38:41
 * @Last Modified by:   Chris
-* @Last Modified time: 2019-09-13 18:55:52
+* @Last Modified time: 2019-09-15 18:51:04
 */
 *{
 	margin: 0;
@@ -10,7 +10,4 @@
 }
 li{
 	list-style: none;
-}
-p{
-	background-color: skyblue;
 }
