@@ -2,7 +2,7 @@
 * @Author: Chris
 * @Date:   2019-09-12 17:38:41
 * @Last Modified by:   Chris
-* @Last Modified time: 2019-09-17 18:01:50
+* @Last Modified time: 2019-09-18 11:14:07
 */
 /*共通样式开始*/
 *{
@@ -12,4 +12,43 @@
 li{
 	list-style: none;
 }
+.header{
+			width: 100%;
+			height: 100px;
+			background-color: black;
+		}
+		.logo{
+			width: 20%;
+			height: 100%;
+			background: red;
+			float: left;
+		}
+		.nav{
+			width: 80%;
+			height: 100px;
+			background: blue;
+			float: right;
+		}
+		.section{
+			width: 100%;
+			height: 600px;
+			background: pink;
+		}
+		.article{
+			width: 60%;
+			height: 100%;
+			background: tomato;
+			float: left;
+		}
+		.sider{
+			width: 40%;
+			height: 100%;
+			background: green;
+			float: right;
+		}
+		.footer{
+			width: 100%;
+			height: 200px;
+			background: black;
+		}
 /*共通样式结束*/
