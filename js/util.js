@@ -1,9 +1,3 @@
-/*
-* @Author: TomChen
-* @Date:   2018-12-09 17:11:35
-* @Last Modified by:   TomChen
-* @Last Modified time: 2018-12-11 20:48:46
-*/
 
 
 /**

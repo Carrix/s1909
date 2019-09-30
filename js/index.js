@@ -1,9 +1,8 @@
-/*
-* @Author: TomChen
-* @Date:   2018-12-23 16:23:34
-* @Last Modified by:   TomChen
-* @Last Modified time: 2019-01-30 17:12:23
-*/
+
+
+
+
+
 handleCart();
 handleNav();
 handleCarousel();
