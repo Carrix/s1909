@@ -2,11 +2,12 @@
 * @Author: Chris
 * @Date:   2019-10-15 16:35:44
 * @Last Modified by:   Chris
-* @Last Modified time: 2019-10-16 17:43:47
+* @Last Modified time: 2019-10-17 10:16:38
 */
 const express = require('express')
 const swig = require('swig')
 const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
 
 const app = express()
 
@@ -27,6 +28,14 @@ db.once('open',()=>{
 
 //静态资源处理
 app.use(express.static('public'))
+
+//parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+//parse application/json
+app.use(bodyParser.json())
+
+
+
 //开发阶段设置不走缓存
 swig.setDefaults({
 	// cache: 'memory'
@@ -47,7 +56,7 @@ app.set('views','./views')
 app.set('view engine','html')
 
 app.use("/",require('./routes/index.js'))
-
+app.use("/user",require('./routes/user.js'))
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'))
 

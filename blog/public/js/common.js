@@ -1,7 +1,3 @@
-
-
-
-
 ;(function($){
 	//1.登录注册面板的切换
 	var $register = $('#register')
@@ -17,11 +13,61 @@
 		$register.hide()
 		$login.show()
 	})
+	//用户名以字母开头包含数字和下划线的3-10位字符
+	var usernameReg = /^[a-z][a-z0-9_]{2,9}$/i
+	//密码为3-6位字符
+	var passwordReg = /^\w{3,6}$/
+	//2.注册
+	$('#sub-register').on('click',function(){
+		//2.1 获取表单数据
+		var username = $register.find('[name=username]').val()
+		var password = $register.find('[name=password]').val()
+		var repassword = $register.find('[name=repassword]').val()
+		//2.2 验证
+		var errMsg = ''
+		var $err = $register.find('.err')
 
-
-	/*
-	$('.carousel').carousel({
-	  interval: 2000
+		if(usernameReg.test(username)){
+			errMsg = '用户名以字母开头包含数字和下划线的3-10位字符'
+		}
+		else if(!passwordReg.test(password)){
+			errMsg = '密码为3-6位任意字符'
+		}
+		else if(password != repassword){
+			errMsg = '两次密码不一致'
+		}
+		//验证不通过
+		if(errMsg){
+			$err.html(errMsg)
+			return 
+		}
+		//验证通过
+		else{
+			$err.html('')
+			//2.3 发送ajax请求
+			$.ajax({
+				url:'/user/register',
+				type:'POST',
+				dateType:'json',
+				data:{
+					username:username,
+					password:password
+				}
+			})
+			.done(function(result){
+				console.log(result)
+			})
+			.fail(function(err){
+				$err.html("请求失败,请稍后再试")
+			})
+		}
 	})
-	*/
+
+	
+
+
+
+
 })(jQuery);
+
+
