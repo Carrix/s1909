@@ -2,7 +2,7 @@
 * @Author: Chris
 * @Date:   2019-10-16 16:30:28
 * @Last Modified by:   Chris
-* @Last Modified time: 2019-10-18 20:24:28
+* @Last Modified time: 2019-10-18 21:08:39
 */
 const express = require('express')
 
@@ -18,7 +18,9 @@ router.use((req,res,next)=>{
 
 //显示后台管理首页
 router.get('/', (req, res) => {
-	res.send('admin page')
+	res.render("admin/index",{
+		userInfo:req.userInfo
+	})
 })
 
 
