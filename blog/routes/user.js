@@ -2,7 +2,7 @@
 * @Author: Chris
 * @Date:   2019-10-16 16:30:28
 * @Last Modified by:   Chris
-* @Last Modified time: 2019-10-18 18:06:19
+* @Last Modified time: 2019-10-18 18:34:16
 */
 const express = require('express')
 const UserModel = require('../models/user.js')
@@ -62,7 +62,9 @@ router.post('/login',(req,res)=>{
 		//验证成功
 		if(user){
 			//生成cookie并且返回给前端
-			req.cookies.set('userInfo',JSON.stringify(user),{maxAge:1000*60*60*24})
+			// req.cookies.set('userInfo',JSON.stringify(user),{maxAge:1000*60*60*24})
+			//添加session
+			req.session.userInfo = user
 			res.json({
 				status:0,
 				message:"登录成功",
@@ -88,7 +90,8 @@ router.post('/login',(req,res)=>{
 })
 //退出登录
 router.get('/logout',(req,res)=>{
-	req.cookies.set('userInfo',null)
+	// req.cookies.set('userInfo',null)
+	req.session.destroy()
 	res.json({
 		status:0,
 		message:"退出登录成功"
