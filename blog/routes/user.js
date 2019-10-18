@@ -2,7 +2,7 @@
 * @Author: Chris
 * @Date:   2019-10-16 16:30:28
 * @Last Modified by:   Chris
-* @Last Modified time: 2019-10-18 16:23:40
+* @Last Modified time: 2019-10-18 17:15:03
 */
 const express = require('express')
 const UserModel = require('../models/user.js')
@@ -61,6 +61,8 @@ router.post('/login',(req,res)=>{
 	.then(user=>{
 		//验证成功
 		if(user){
+			//生成cookie并且返回给前端
+			req.cookies.set('userInfo',JSON.stringify(user))
 			res.json({
 				status:0,
 				message:"登录成功",

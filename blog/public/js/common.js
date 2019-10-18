@@ -102,9 +102,12 @@
 			})
 			.done(function(result){
 				if(result.status == 0){//成功
+					/*
 					$login.hide()
 					$('#user-info span').html(result.data.username)
 					$('#user-info').show()
+					*/
+					window.location.reload()
 				}else{//失败
 					$err.html(result.message)
 				}
