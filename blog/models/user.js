@@ -2,13 +2,13 @@
 * @Author: Chris
 * @Date:   2019-10-17 10:56:01
 * @Last Modified by:   Chris
-* @Last Modified time: 2019-10-18 13:22:00
+* @Last Modified time: 2019-10-18 15:51:35
 */
 const mongoose = require('mongoose')
 
 //1.定义Schema
 const UserSchema = new mongoose.Schema({
-	name: {
+	username: {
 		type:String,
 		required:[true,"姓名必须输入"],
 		minlength:[3,"用户名最小长度为3个字符"],
@@ -25,7 +25,7 @@ const UserSchema = new mongoose.Schema({
 	
 })
 
-const UserModel = mongoose.model('User',UserSchema)
+const UserModel = mongoose.model('user',UserSchema)
 
 
 module.exports = UserModel

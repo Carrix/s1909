@@ -2,7 +2,7 @@
 * @Author: Chris
 * @Date:   2019-10-15 16:35:44
 * @Last Modified by:   Chris
-* @Last Modified time: 2019-10-18 15:14:45
+* @Last Modified time: 2019-10-18 15:43:27
 */
 const express = require('express')
 const swig = require('swig')
@@ -31,6 +31,8 @@ db.once('open',()=>{
 //所有静态资源回去请求 public 目录下面的资源
 //请求的是一个目录 去找目录下面的index.html
 //如果找不到就会继续向下执行
+//以lib/bootstrap-3.3.7-dist/css/bootstrap.min.css请求为例
+//会在服务器端的public文件目录下面查找lib/bootstrap-3.3.7-dist/css/bootstrap.min.css文件并返回
 app.use(express.static('public'))
 //为了处理post/put请求的参数，设置bodyParser中间件
 //parse application/x-www-form-urlencoded

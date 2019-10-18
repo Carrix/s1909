@@ -1,3 +1,4 @@
+//js文件保存在服务器端,但是最终会被请求到客户端,由客户端解析执行
 ;(function($){
 	//1.登录注册面板的切换
 	var $register = $('#register')
@@ -66,7 +67,47 @@
 			})
 		}
 	})
+	//3.登录
+	$('#sub-register').on('click',function(){
+		//3.1 获取表单数据
+		var username = $login.find('[name=username]').val()
+		var password = $login.find('[name=password]').val()
+		//3.2 验证
+		var errMsg = ''
+		var $err = $login.find('.err')
 
+		if(!usernameReg.test(username)){
+			errMsg = '用户名以字母开头包含数字和下划线的3-10位字符'
+		}
+		else if(!passwordReg.test(password)){
+			errMsg = '密码为3-6位任意字符'
+		}
+		//验证不通过
+		if(errMsg){
+			$err.html(errMsg)
+			return 
+		}
+		//验证通过
+		else{
+			$err.html('')
+			//3.3 发送ajax请求
+			$.ajax({
+				url:'/user/login',
+				type:'POST',
+				dateType:'json',
+				data:{
+					username:username,
+					password:password
+				}
+			})
+			.done(function(result){
+				console.log(result)
+			})
+			.fail(function(err){
+				$err.html("请求失败,请稍后再试")
+			})
+		}
+	})
 	
 
 
