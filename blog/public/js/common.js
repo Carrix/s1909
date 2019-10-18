@@ -27,7 +27,7 @@
 		var errMsg = ''
 		var $err = $register.find('.err')
 
-		if(usernameReg.test(username)){
+		if(!usernameReg.test(username)){
 			errMsg = '用户名以字母开头包含数字和下划线的3-10位字符'
 		}
 		else if(!passwordReg.test(password)){
@@ -55,7 +55,11 @@
 				}
 			})
 			.done(function(result){
-				console.log(result)
+				if(result.status == 0){//成功
+					$('#go-login').trigger('click')
+				}else{//失败
+					$err.html(result.message)
+				}
 			})
 			.fail(function(err){
 				$err.html("请求失败,请稍后再试")

@@ -2,7 +2,7 @@
 * @Author: Chris
 * @Date:   2019-10-17 10:56:01
 * @Last Modified by:   Chris
-* @Last Modified time: 2019-10-17 11:00:07
+* @Last Modified time: 2019-10-18 13:22:00
 */
 const mongoose = require('mongoose')
 
@@ -16,14 +16,12 @@ const UserSchema = new mongoose.Schema({
 	},
 	password:{
 		type:String,
-		required:[true,"密码必须输入"],
-		minlength:[3,"密码最小长度为3个字符"],
-		maxlength:[6,"密码最大长度为6个字符"]
+		required:[true,"密码必须输入"]
 	},
 	isAdmin:{
 		type:Boolean,
 		default:false
-	},
+	}
 	
 })
 
