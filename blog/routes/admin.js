@@ -2,7 +2,7 @@
 * @Author: Chris
 * @Date:   2019-10-16 16:30:28
 * @Last Modified by:   Chris
-* @Last Modified time: 2019-10-18 21:08:39
+* @Last Modified time: 2019-10-18 21:25:24
 */
 const express = require('express')
 
@@ -22,6 +22,8 @@ router.get('/', (req, res) => {
 		userInfo:req.userInfo
 	})
 })
-
-
+//显示用户列表
+router.get('/users',(req,res)=>{
+	
+})
 module.exports = router
