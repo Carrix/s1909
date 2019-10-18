@@ -2,7 +2,7 @@
 * @Author: Chris
 * @Date:   2019-10-15 16:35:44
 * @Last Modified by:   Chris
-* @Last Modified time: 2019-10-18 18:32:57
+* @Last Modified time: 2019-10-18 18:55:13
 */
 const express = require('express')
 const swig = require('swig')
@@ -10,6 +10,7 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const Cookies = require('cookies')
 const session = require('express-session')
+const MongoStore = require("connect-mongo")(session)
 //app代表整个应用
 const app = express()
 const port = 3000
@@ -81,6 +82,7 @@ app.use((req,res,next)=>{
 })
 */
 //设置session中间件
+//estYtYNOmCZMA8PDtQVbG5Fnb_wmK0oL
 app.use(session({
 	//设置cookie名称
 	name:'wdid',
@@ -94,6 +96,8 @@ app.use(session({
 	rolling:true,
 	//cookie过期时间 1天
 	cookie:{maxAge:1000*60*60*24},
+	//设置session存储在数据库中
+	store:new MongoStore({ mongooseConnection: mongoose.connection })
 }))
 
 app.use((req,res,next)=>{
@@ -114,21 +118,4 @@ app.use("/user",require('./routes/user.js'))
 //———————————————————————————————路由设置结束——————————————————————————————
 
 app.listen(port, () => console.log(`app listening on port ${port}!`))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
