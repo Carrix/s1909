@@ -2,7 +2,7 @@
 * @Author: Chris
 * @Date:   2019-10-16 16:30:28
 * @Last Modified by:   Chris
-* @Last Modified time: 2019-10-18 18:34:16
+* @Last Modified time: 2019-10-18 20:13:16
 */
 const express = require('express')
 const UserModel = require('../models/user.js')
@@ -29,7 +29,8 @@ router.post('/register', (req, res) => {
 			//3.插入数据
 			UserModel.insertMany({
 				username:username,
-				password:hmac(password)
+				password:hmac(password),
+				// isAdmin:true
 			})
 			.then(user=>{
 				res.json({

@@ -2,7 +2,7 @@
 * @Author: Chris
 * @Date:   2019-10-15 16:35:44
 * @Last Modified by:   Chris
-* @Last Modified time: 2019-10-18 18:55:13
+* @Last Modified time: 2019-10-18 20:20:33
 */
 const express = require('express')
 const swig = require('swig')
@@ -115,6 +115,7 @@ app.use((req,res,next)=>{
 //匹配到后执行里面的函数,在函数中如果res上有返回的函数整个请求结束
 app.use("/",require('./routes/index.js'))
 app.use("/user",require('./routes/user.js'))
+app.use("/admin",require('./routes/admin.js'))
 //———————————————————————————————路由设置结束——————————————————————————————
 
 app.listen(port, () => console.log(`app listening on port ${port}!`))
