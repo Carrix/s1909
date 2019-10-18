@@ -1,48 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>
-	{% block title %}{% endblock %}
-  	</title>
-	<link rel="stylesheet" href="lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-  	<link rel="stylesheet" href="css/common.css">
-	{% block head %}{% endblock %}
-</head>                                 				
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    {% block title %}{% endblock %}
+  </title>
+  <link rel="stylesheet" href="/lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/common.css">
+  {% block head %}{% endblock %}
+</head>
 <body>
   <nav class="navbar navbar-default navbar-fixed-top" id="kz-navbar">
-	<div class="container">
-	  <!-- Brand and toggle get grouped for better mobile display -->
-	  <div class="navbar-header">
-		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-		  <span class="sr-only">Toggle navigation</span>
-		  <span class="icon-bar"></span>
-		  <span class="icon-bar"></span>
-		  <span class="icon-bar"></span>
-		</button>
-		<a class="navbar-brand link" href="#">我的个人博客</a>
-	  </div>
-	  <!-- Collect the nav links, forms, and other content for toggling -->
-	  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		<ul class="nav navbar-nav">
-		  <li class="active"><a href="index.html">首页<span class="sr-only">(current)</span></a></li>
-		  <li><a href="list.html">HTML/CSS</a></li>
-		  <li><a href="list.html">JavaScript</a></li>
-		  <li><a href="list.html">学无止境</a></li>
-		  <li><a href="list.html">我的足迹</a></li>
-		</ul>
-	  </div><!-- /.navbar-collapse -->
-	</div><!-- /.container -->
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand link" href="/">我的个人博客</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          {% if currentCategoryId %}
+          <li><a href="/">首页</a></li>
+          {% else %}
+          <li class="active"><a href="/">首页</a></li>
+          {% endif %}
+          
+          {% for category in categories %}
+          {% if category._id.toString() == currentCategoryId %}
+          <li class="active"><a href="/list/{{category._id.toString()}}">{{ category.name }}</a></li>
+          {% else %}
+          <li><a href="/list/{{category._id.toString()}}">{{ category.name }}</a></li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container -->
   </nav>
   <div class="main">
-	<div class="container">
-	  <div class="row">
-		<div class="col-md-8">
-			{% block content %}{% endblock %}
-		</div>
-		     <div class="col-md-4 hidden-xs hidden-sm">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          {% block content %}{% endblock %}
+        </div>
+        <div class="col-md-4 hidden-xs hidden-sm">
           <!--用户注册登录-->
           {% if userInfo._id %}
           <div class="user-panel" id='user-info'>
@@ -143,47 +151,46 @@
                 </div>
                 <div class="media-body">
                   <h4 class="media-heading">Chris</h4>
-                  95后！19年入行。一直潜心研究web技术，一边学习一边积累经验。
+                  95后草根！19年入行。一直潜心研究web技术，一边学习一边积累经验。
                 </div>
               </div>
             </div>
           </div>
-		  <div class="panel panel-default custom-panel hot-list">
-			<div class="panel-heading">
-			  <h3 class="panel-title">点击排行</h3>
-			</div>
-			<div class="panel-body">
-			  <ul class="list-group">
-				<li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">just do it just do it just do it just do it just do it</a></li>
-				<li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">just do it just do it just do it just do it just do it</a></li>
-				<li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">just do it just do it just do it just do it just do it</a></li>
-				<li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">just do it just do it just do it just do it just do it</a></li>
-				<li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">just do it just do it just do it just do it just do it</a></li>
-				<li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">just do it just do it just do it just do it just do it</a></li>
-				<li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">just do it just do it just do it just do it just do it</a></li>
-				<li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">just do it just do it just do it just do it just do it</a></li>                                                 
-			  </ul>     
-			</div>
-		  </div>
-		  <div class="panel panel-default custom-panel">
-			<div class="panel-heading">
-			  <h3 class="panel-title">关注我</h3>
-			</div>
-			<div class="panel-body">
-			  <img src="img/wechat.jpeg" class="img-responsive" alt="">
-			</div>
-		  </div>                                         
-		</div>
-	  </div>
-	</div>
+          <div class="panel panel-default custom-panel hot-list">
+            <div class="panel-heading">
+              <h3 class="panel-title">点击排行</h3>
+            </div>
+            <div class="panel-body">
+              <ul class="list-group">
+                {% for  article in  topArticles %}
+                <li class="list-group-item"><a href="/detail/{{article._id.toString()}}" class="link text-ellipsis" target="_blank">[{{ article.click }}]{{article.title}}</a></li>
+                {% endfor %}
+              </ul>     
+            </div>
+          </div>
+          <div class="panel panel-default custom-panel">
+            <div class="panel-heading">
+              <h3 class="panel-title">关注我</h3>
+            </div>
+            <div class="panel-body">
+              <img src="/img/wechat.jpeg" class="img-responsive" alt="">
+            </div>
+          </div>                                         
+        </div>
+      </div>
+    </div>
   </div>
   <footer>
-	Blog Design by <a href="#">Chris</a> <a href="#">豫ICP备644191901号-1</a>.
+    Blog Design by <a href="#">Chris</a> <a href="#">豫ICP备644191901号-1</a>.
   </footer>
 
-<script src="lib/jquery/jquery-1.12.4.min.js"></script>	
-<script src="lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-<script src="js/common.js"></script>
+<script src="/lib/jquery/jquery-1.12.4.min.js"></script> 
+<script src="/lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="/lib/moment/moment.js"></script>
+<script src="/js/pagination.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/logout.js"></script>
 {% block footer %}{% endblock %}
 </body>
+
 </html>
