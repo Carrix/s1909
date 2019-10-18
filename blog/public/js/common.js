@@ -101,7 +101,13 @@
 				}
 			})
 			.done(function(result){
-				console.log(result)
+				if(result.status == 0){//成功
+					$login.hide()
+					$('#user-info span').html(result.data.username)
+					$('#user-info').show()
+				}else{//失败
+					$err.html(result.message)
+				}
 			})
 			.fail(function(err){
 				$err.html("请求失败,请稍后再试")
