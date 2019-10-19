@@ -2,7 +2,7 @@
 * @Author: Chris
 * @Date:   2019-10-16 16:30:28
 * @Last Modified by:   Chris
-* @Last Modified time: 2019-10-19 19:21:46
+* @Last Modified time: 2019-10-19 19:48:42
 */
 const express = require('express')
 const UserModel = require('../models/user.js')
@@ -43,17 +43,32 @@ router.get('/users',(req,res)=>{
 		第 page 页, 跳过(page-1)*limit 条
 	*/
 	let page = req.query.page
-
+	const limit = 2
 	page = parseInt(page)
-	
+
 	if(isNaN(page)){
 		page = 1
 	}
 
-	const limit = 2
+	//上一页边界值控制
+	if(page == 0){
+		page = 1
+	}
+
+	UserModel.countDocuments((err,count)=>{
+		//总页数
+		const pages = Math.ceil(count / limit)
+		//下一页边界值控制
+		if(page > pages){
+			page = pages
+		}
+	})
+	//生成页码数组
+	const list = []
+	for(let i = 1;i<=pages;i++){
+		list.push(i)
+	}
 	const skip = (page-1)*limit
-
-
 
 	UserModel.find({})
 	.skip(skip)
@@ -61,7 +76,9 @@ router.get('/users',(req,res)=>{
 	.then(users=>{
 		res.render("admin/user_list",{
 			userInfo:req.userInfo,
-			users:users
+			users:users,
+			page:page,
+			list:list
 		})
 	})
 	.catch(err=>{
