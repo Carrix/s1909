@@ -2,7 +2,7 @@
 * @Author: Chris
 * @Date:   2019-10-15 16:35:44
 * @Last Modified by:   Chris
-* @Last Modified time: 2019-10-18 20:20:33
+* @Last Modified time: 2019-10-19 10:33:50
 */
 const express = require('express')
 const swig = require('swig')
@@ -15,7 +15,10 @@ const MongoStore = require("connect-mongo")(session)
 const app = express()
 const port = 3000
 //1.连接数据库
-mongoose.connect('mongodb://localhost/blog', { useNewUrlParser: true })
+mongoose.connect('mongodb://localhost/blog', { useNewUrlParser: true, useUnifiedTopology: true });
+
+
+
 //解决findOneAndUpdate方法的警告
 // mongoose.set('useFindAndModify', false)
 //获取db对象
