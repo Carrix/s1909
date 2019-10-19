@@ -2,7 +2,7 @@
 * @Author: Chris
 * @Date:   2019-10-15 16:35:44
 * @Last Modified by:   Chris
-* @Last Modified time: 2019-10-19 10:33:50
+* @Last Modified time: 2019-10-19 19:26:37
 */
 const express = require('express')
 const swig = require('swig')
@@ -20,7 +20,7 @@ mongoose.connect('mongodb://localhost/blog', { useNewUrlParser: true, useUnified
 
 
 //解决findOneAndUpdate方法的警告
-// mongoose.set('useFindAndModify', false)
+mongoose.set('useFindAndModify', false)
 //获取db对象
 const db = mongoose.connection
 //连接数据库失败

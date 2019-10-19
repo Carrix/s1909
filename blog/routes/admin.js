@@ -2,7 +2,7 @@
 * @Author: Chris
 * @Date:   2019-10-16 16:30:28
 * @Last Modified by:   Chris
-* @Last Modified time: 2019-10-19 11:24:09
+* @Last Modified time: 2019-10-19 19:21:46
 */
 const express = require('express')
 const UserModel = require('../models/user.js')
@@ -25,7 +25,39 @@ router.get('/', (req, res) => {
 })
 //显示用户列表
 router.get('/users',(req,res)=>{
+	/*
+		分页分析:
+		前提条件:得知道获取第几页,前端发送参数 page
+		约定:每一页显示多少条数据,约定每页显示,limit = 2
+		举例:
+		1
+		2
+		3
+		4
+		5
+		6
+		第 1 页 显示 第 1,2,	跳过 0 条 skip(0) 取 2 条 limit(2)
+		第 2 页 显示 第 3,4,	跳过 2 条	 skip(2) 取 2 条 limit(2)
+		第 3 页 显示 第 5,6,	跳过 4 条 skip(4) 取 2 条 limit(2)
+
+		第 page 页, 跳过(page-1)*limit 条
+	*/
+	let page = req.query.page
+
+	page = parseInt(page)
+	
+	if(isNaN(page)){
+		page = 1
+	}
+
+	const limit = 2
+	const skip = (page-1)*limit
+
+
+
 	UserModel.find({})
+	.skip(skip)
+	.limit(limit)
 	.then(users=>{
 		res.render("admin/user_list",{
 			userInfo:req.userInfo,
