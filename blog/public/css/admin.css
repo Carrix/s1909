@@ -1,15 +1,16 @@
-/*
-* @Author: Chris
-* @Date:   2019-10-20 14:01:50
-* @Last Modified by:   Chris
-* @Last Modified time: 2019-10-20 14:02:31
-*/
+
+
+
+
 .user-info{
-	flex: right;
-	margin-top: 10px;
-	margin-right: 10px;
+    float: right;
+    margin-top: 10px;
+    margin-right: 100px;
 }
 .content{
-	margin-top: 20px;
-	min-height: 300px;
+    margin-top: 20px;
+    min-height: 300px;
+}
+.ck-editor__editable{
+    min-height: 300px;
 }

@@ -1,4 +1,9 @@
 
+
+
+
+
+
 .detail-panel{
 	min-height: 600px;
 }
@@ -12,3 +17,15 @@
 .detail-panel .panel-body{
 	background: #fff;
 }
+.btn-sub-comment{
+    padding: 26px 20px;
+}
+#comment-wrap .panel-body{
+    word-break: break-all;
+}
+#comment-wrap{
+    min-height: 400px;
+}
+
+
+
