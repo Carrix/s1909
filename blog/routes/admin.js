@@ -2,7 +2,7 @@
 * @Author: Chris
 * @Date:   2019-10-16 16:30:28
 * @Last Modified by:   Chris
-* @Last Modified time: 2019-10-20 11:33:25
+* @Last Modified time: 2019-10-20 14:13:44
 */
 const express = require('express')
 const UserModel = require('../models/user.js')
