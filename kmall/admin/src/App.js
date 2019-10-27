@@ -2,7 +2,7 @@
 * @Author: Chris
 * @Date:   2019-10-23 09:40:06
 * @Last Modified by:   Chris
-* @Last Modified time: 2019-10-27 21:53:39
+* @Last Modified time: 2019-10-27 22:08:05
 */
 import React, { Component } from 'react'
 import './App.css'
@@ -14,8 +14,10 @@ import {
 	Switch,
     Redirect,
 } from "react-router-dom"
+
 import Login from 'pages/login'
 import Home from 'pages/home'
+import Err from 'common/err'
 
 import { getUsername } from 'util'
 
@@ -36,8 +38,11 @@ class App extends Component {
         return (
         	<Router>
             	<div className="App">
-                    <ProtectRoute exact path="/" component={Home} />
-            		<LoginRoute path="/login" component={login} />
+                    <Switch>
+                        <ProtectRoute exact path="/" component={Home} />
+                		<LoginRoute path="/login" component={login} />
+                        <Route component={Err} />
+                    </Switch>
             	</div>
             </Router>
         )          
