@@ -2,28 +2,20 @@ import axios from 'axios'
 import { message } from 'antd'
 import * as types  from './actionTypes.js'
 import { saveUsername } from 'util'
-export const getChangeItemAction = (task)=>({
-    type:types.CHANGE_ITEM,
-    payload: task    
-})
-
-export const getAddItemAction = ()=>({
-    type:types.ADD_ITEM
-})
-
-export const getDelItemAction = (index)=>({
-    type: types.DEL_ITEM,
-    payload: index   
-})
 
 
-const getLoadInitDataAction = (payload)=>({
-    type:types.LOAD_DATA,
-    payload
+const getLoginReqestStartAction = ()=>({
+    type:types.LOGIN_REQEST_START,
 })
+
+const getLoginReqestDonetAction = ()=>({
+    type:types.LOGIN_REQEST_DONE,
+})
+
 
 export const getLoginAction = (values)=>{
     return (dispatch,getState)=>{
+        dispatch(getLoginReqestStartAction())
         values.role = 'admin'
         axios({
             method:'post',
@@ -45,6 +37,9 @@ export const getLoginAction = (values)=>{
         .catch(err=>{
             message.error('网络错误,请稍后再试')
         })      
+        .finally(()=>{
+            dispatch(getLoginReqestDoneAction())
+        })
     }
 }
 
