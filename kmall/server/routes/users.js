@@ -9,7 +9,7 @@ const hmac = require('../util/hmac.js')
 
 const router = Router();
 
-/*
+
 router.get('/init',(req,res)=>{
 	UserModel.insertMany({
 		username:'admin',
@@ -24,7 +24,7 @@ router.get('/init',(req,res)=>{
 		res.send('err')
 	})
 })
-*/
+
 /*
 router.get('/init',(req,res)=>{
 	const users = []

@@ -7,7 +7,7 @@ const session = require('express-session');
 const MongoStore = require("connect-mongo")(session);
 
 //启动数据库
-mongoose.connect('mongodb://localhost:27017/kmall',{ useNewUrlParser: true });
+mongoose.connect('mongodb://localhost:27017/kmall',{ useNewUrlParser: true, useUnifiedTopology: true});
 
 const db = mongoose.connection;
 
