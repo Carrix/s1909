@@ -2,7 +2,7 @@
  * @Author: Chris
  * @Date:   2019-10-23 09:40:06
  * @Last Modified by:   Chris
- * @Last Modified time: 2019-10-28 13:43:14
+ * @Last Modified time: 2019-10-28 14:00:42
  */
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
@@ -17,7 +17,11 @@ class Home extends Component {
     constructor(props){
         super(props)
     }
+    ComponentDidMount(){
+        this.props.handleCount()
+    }
     render() {
+        const { usernum,ordernum,productnum } = this.props
         return (
         <div className="Home">
             <Layout>
@@ -28,17 +32,17 @@ class Home extends Component {
                     <Row>
                         <Col span={8}>
                             <Card title="用户数" bordered={false} style={{ width: 300 }}>
-                                <p>100</p>
+                                <p>{usernum}</p>
                             </Card>
                         </Col>
                         <Col>
                             <Card title="商品数" bordered={false} style={{ width: 300 }}>
-                                <p>101</p>
+                                <p>{productnum}</p>
                             </Card>
                         </Col>
                         <Col>
                             <Card title="订单数" bordered={false} style={{ width: 300 }}>
-                                <p>101</p>
+                                <p>{ordernum}</p>
                             </Card>
                         </Col>
                     </Row>
@@ -52,9 +56,15 @@ class Home extends Component {
 
 //映射属性到组件
 const mapStateToProps = (state) => ({
+    usernum:state.get('home').get('usernum'),
+    ordernum:state.get('home').get('ordernum'),
+    productnum:state.get('home').get('productnum'),
 })
 //映射方法到组件
 const mapDispatchToProps = (dispatch) => ({
+    handleCount:()=>{
+        dispatch(actionCreator,getCountAction())
+    }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)
