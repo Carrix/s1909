@@ -13,7 +13,7 @@ import {
 import Login from 'pages/login'
 import Home from 'pages/home'
 import User from 'pages/user'
-// import Category from 'pages/category'
+import Category from 'pages/category'
 // import Product from 'pages/product'
 // import Ad from 'pages/ad'
 // import Order from 'pages/order'

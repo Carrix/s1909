@@ -2,7 +2,7 @@
 * @Author: Chris
 * @Date:   2019-10-28 14:37:03
 * @Last Modified by:   Chris
-* @Last Modified time: 2019-10-28 17:53:39
+* @Last Modified time: 2019-10-28 18:16:02
 */
 //目标 导出一个对象 对象的属性是方法名,对象的值是方法
 import axios from 'axios'
@@ -21,7 +21,7 @@ const getApiObj = (apiConfig)=>{
 			return request(url,method,data)
 		}
 	}
-	return objObj
+	return apiObj
 }
 const request(url,method,data)=>{
 	return new Promise((resolve,reject)=>{
