@@ -2,7 +2,7 @@
 * @Author: Chris
 * @Date:   2019-10-28 14:37:03
 * @Last Modified by:   Chris
-* @Last Modified time: 2019-10-28 15:44:01
+* @Last Modified time: 2019-10-28 17:53:39
 */
 //目标 导出一个对象 对象的属性是方法名,对象的值是方法
 import axios from 'axios'
@@ -25,12 +25,20 @@ const getApiObj = (apiConfig)=>{
 }
 const request(url,method,data)=>{
 	return new Promise((resolve,reject)=>{
-		 axios({
+        const options = {
             method:method,
             url:url,
             withCredentials:true,
-            data:data
-        })
+        }
+        switch(options.method.toUpperCase()){
+            case 'GET':
+            case 'DELETE':
+                options.params = data
+                break
+            default:
+                options.data = data
+        }
+		 axios(options)
         .then(result=>{
             const data = result.data
             if(data.code == 10){

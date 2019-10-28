@@ -2,12 +2,12 @@
  * @Author: Chris
  * @Date:   2019-10-23 09:40:06
  * @Last Modified by:   Chris
- * @Last Modified time: 2019-10-28 17:22:06
+ * @Last Modified time: 2019-10-28 17:47:58
  */
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Breadcrumb, Table } from 'antd'
-
+import moment from 'moment'
 import Layout from 'common/layout'
 
 import "./index.css"
@@ -63,7 +63,7 @@ class User extends Component {
         this.props.handlePage(1)
     }
     render() {
-        const { list } = this.props
+        const { list,current,total,pageSize,handlePage } = this.props
         const arr = list.map((user)=>{
             return {
                 key:user.get('_id'),
@@ -71,7 +71,7 @@ class User extends Component {
                 isAdmin:user.get('isAdmin'),
                 phone:user.get('phone'),
                 email:user.get('email'),
-                createdAt:user.get('createdAt')
+                createdAt:moment(user.get('createdAt')).format('YYYY-MM-DD HH:mm:ss')
             }
         }).toJS()
         return (
@@ -83,7 +83,20 @@ class User extends Component {
                     <Breadcrumb.Item>用户列表</Breadcrumb.Item>
                 </Breadcrumb>
                 <div className="content">
-                    <Table dataSource={dataSource} columns={columns} />;
+                    <Table 
+                        dataSource={dataSource} 
+                        columns={columns} 
+                        pagination={{
+                            current:current,
+                            total:total,
+                            pageSize:pageSize
+                        }}
+                        onChange={
+                            (page)=>{
+                                handlePage(page.current)
+                            }
+                        }
+                    />;
                 </div>
             </Layout>
         </div>
@@ -94,7 +107,10 @@ class User extends Component {
 
 //映射属性到组件
 const mapStateToProps = (state) => ({
-    list:state.get('user').get('list')
+    list:state.get('user').get('list'),
+    current:state.get('user').get('current'),
+    total:state.get('user').get('total'),
+    pageSize:state.get('user').get('pageSize'),
 })
 //映射方法到组件
 const mapDispatchToProps = (dispatch) => ({
