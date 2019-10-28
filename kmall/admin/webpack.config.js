@@ -2,7 +2,7 @@
 * @Author: Chris
 * @Date:   2019-10-20 21:00:11
 * @Last Modified by:   Chris
-* @Last Modified time: 2019-10-27 22:00:06
+* @Last Modified time: 2019-10-28 14:36:37
 */
 
 const path = require('path')
@@ -38,6 +38,7 @@ module.exports = {
             pages:path.resolve(__dirname,'./src/pages'),
             util:path.resolve(__dirname,'./src/util'),
             common:path.resolve(__dirname,'./src/common'),
+            api:path.resolve(__dirname,'./src/api'),
         }
     },
     module: {

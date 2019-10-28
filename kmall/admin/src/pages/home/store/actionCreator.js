@@ -1,4 +1,4 @@
-import axios from 'axios'
+import api from 'api'
 import { message } from 'antd'
 import * as types  from './actionTypes.js'
 import { saveUsername } from 'util'
@@ -11,6 +11,18 @@ const getSetCountAction = (payload)=>({
 
 export const getCountAction = (values)=>{
     return (dispatch,getState)=>{
+        api.getCounts()
+        .then(result=>{
+            if(result.code == 0){
+               dispatch(getSetCountAction(result.data))
+            }else{
+                message.error('获取首页数据失败,请稍后再试')
+            }
+        })
+        .catch(err=>{
+            message.error('网络错误,请稍后再试')
+        })    
+        /*
         axios({
             method:'get',
             url:'http://127.0.0.1:3000/counts/',
@@ -27,6 +39,7 @@ export const getCountAction = (values)=>{
         .catch(err=>{
             message.error('网络错误,请稍后再试')
         })      
+        */
     }
 }
 
