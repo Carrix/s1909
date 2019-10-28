@@ -2,10 +2,11 @@
  * @Author: Chris
  * @Date:   2019-10-23 09:40:06
  * @Last Modified by:   Chris
- * @Last Modified time: 2019-10-28 11:33:51
+ * @Last Modified time: 2019-10-28 13:43:14
  */
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Breadcrumb,Card,Row,Col } from 'antd'
 
 import Layout from 'common/layout'
 
@@ -20,7 +21,28 @@ class Home extends Component {
         return (
         <div className="Home">
             <Layout>
-               <h1>首页内容</h1>
+                <Breadcrumb style={{ margin:'16px 0' }}>
+                <Breadcrumb.Item>首页</Breadcrumb.Item>
+                </Breadcrumb>
+                <div className="content">
+                    <Row>
+                        <Col span={8}>
+                            <Card title="用户数" bordered={false} style={{ width: 300 }}>
+                                <p>100</p>
+                            </Card>
+                        </Col>
+                        <Col>
+                            <Card title="商品数" bordered={false} style={{ width: 300 }}>
+                                <p>101</p>
+                            </Card>
+                        </Col>
+                        <Col>
+                            <Card title="订单数" bordered={false} style={{ width: 300 }}>
+                                <p>101</p>
+                            </Card>
+                        </Col>
+                    </Row>
+                </div>
             </Layout>
         </div>
         );
