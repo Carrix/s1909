@@ -2,7 +2,7 @@
  * @Author: Chris
  * @Date:   2019-10-23 09:40:06
  * @Last Modified by:   Chris
- * @Last Modified time: 2019-10-28 17:12:12
+ * @Last Modified time: 2019-10-28 17:22:06
  */
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
@@ -59,7 +59,9 @@ class User extends Component {
     constructor(props) {
         super(props)
     }
-    ComponentDidMount() {}
+    ComponentDidMount() {
+        this.props.handlePage(1)
+    }
     render() {
         const { list } = this.props
         const arr = list.map((user)=>{
@@ -76,9 +78,9 @@ class User extends Component {
             <div className="User">
             <Layout>
                 <Breadcrumb style={{ margin:'16px 0' }}>
-                <Breadcrumb.Item>首页</Breadcrumb.Item>
-                <Breadcrumb.Item>用户管理</Breadcrumb.Item>
-                <Breadcrumb.Item>用户列表</Breadcrumb.Item>
+                    <Breadcrumb.Item>首页</Breadcrumb.Item>
+                    <Breadcrumb.Item>用户管理</Breadcrumb.Item>
+                    <Breadcrumb.Item>用户列表</Breadcrumb.Item>
                 </Breadcrumb>
                 <div className="content">
                     <Table dataSource={dataSource} columns={columns} />;
@@ -96,7 +98,9 @@ const mapStateToProps = (state) => ({
 })
 //映射方法到组件
 const mapDispatchToProps = (dispatch) => ({
-
+    handlePage:(page)=>{
+        dispatch(actionCreator.getPageAction(page))
+    }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(User)
