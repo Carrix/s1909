@@ -2,7 +2,7 @@
  * @Author: Chris
  * @Date:   2019-10-23 09:40:06
  * @Last Modified by:   Chris
- * @Last Modified time: 2019-10-28 18:05:13
+ * @Last Modified time: 2019-10-29 11:14:29
  */
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
@@ -13,19 +13,6 @@ import Layout from 'common/layout'
 import "./index.css"
 import { actionCreator } from './store'
 
-const dataSource = [{
-        key: '1',
-        name: '胡彦斌',
-        age: 32,
-        address: '西湖区湖底公园1号',
-    },
-    {
-        key: '2',
-        name: '胡彦祖',
-        age: 42,
-        address: '西湖区湖底公园1号',
-    },
-];
 
 const columns = [{
         title: '用户名',
@@ -64,7 +51,7 @@ class User extends Component {
     }
     render() {
         const { list,current,total,pageSize,handlePage,isFetching } = this.props
-        const arr = list.map((user)=>{
+        const dataSource = list.map((user)=>{
             return {
                 key:user.get('_id'),
                 username:user.get('username'),
@@ -102,7 +89,7 @@ class User extends Component {
                                 tip:'数据正在努力的加载中'
                             }
                         }
-                    />;
+                    />
                 </div>
             </Layout>
         </div>

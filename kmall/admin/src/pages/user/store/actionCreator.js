@@ -18,14 +18,14 @@ const getSetPageAction = (payload)=>({
 export const getPageAction = (page)=>{
     return (dispatch,getState)=>{
         dispatch(getPageReqestStartAction())
-        api.getCounts({
+        api.getUserList({
             page:page
         })
         .then(result=>{
             if(result.code == 0){
                dispatch(getSetPageAction(result.data))
             }else{
-                message.error('获取首页数据失败,请稍后再试')
+                message.error('获取用户数据失败,请稍后再试')
             }
         })
         .catch(err=>{
