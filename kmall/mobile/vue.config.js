@@ -2,7 +2,7 @@
 * @Author: Chris
 * @Date:   2019-10-29 17:00:05
 * @Last Modified by:   Chris
-* @Last Modified time: 2019-10-30 15:29:03
+* @Last Modified time: 2019-10-30 15:38:24
 */
 const path = require('path')
 
@@ -17,5 +17,10 @@ module.exports = {
 },
 devServer:{
 	port:3003
+	},
+	chainWebpack:config=>{
+		config.resolve.alias
+		.set('pages',path.resolve(__dirname,'./src/pages'))
+		.set('api',path.resolve(__dirname,'./src/api'))
 	}
 }
