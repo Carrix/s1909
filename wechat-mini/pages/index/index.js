@@ -12,6 +12,13 @@ Page({
   }
   */
   tapMotto:function(){
-    console.log('tabMotto...')
+    /*
+    wx.navigateTo({
+      url:'/pages/article/article'
+    })
+    */
+    wx.redirectTo({
+      url:'/pages/article/article'
+    })
   }
 })
