@@ -13,7 +13,7 @@
       </swiper-item>        
   </swiper>
   
-  <view class='article-wrap'>
+  <!-- <view class='article-wrap'>
     <view class='article-item'>
       <view class='article-head'>
         <image class='article-head-avatar' src='/images/big1.jpg'></image>
@@ -43,31 +43,29 @@
         <image class='article-footer-icon' src='/images/x4.png'></image>
         <text class='article-footer-text'>33</text>        
       </view>
-    </view>
- 
-  </view>
+    </view> -->
   
-  <!--
-  <text>{{text}}</text>  
-  -->
-  <!--
-  <view wx:for="{{articles}}">
-    {{index}}: {{item.title}}
   </view>
-  -->
+  <!-- <text>{{text}}</text>   -->
+  
+  
+  <!-- <view wx:for="{{articles}}">
+    {{index}}: {{item.title}}
+  </view> -->
+  
   <!--
   <view wx:for="{{articles}}" wx:for-index="idx" wx:for-item="article">
     {{idx}}: {{article.title}}
   </view>
   -->
-  <!--
-  <block wx:for="{{articles}}" wx:for-index="idx" wx:for-item="article" wx:key="idx">
+  
+  <!-- <block wx:for="{{articles}}" wx:for-index="idx" wx:for-item="article" wx:key="idx">
     {{idx}}: {{article.title}}
-  </block>
-  -->
+  </block> -->
+
   <view class='article-wrap'>
-    <block wx:for="{{articles}}" wx:for-index="idx" wx:for-item="article" wx:key="idx">
-      <!--
+    <block wx:for="{{articles}}" wx:for-index="idx" wx:for-item="article" wx:key="idx"> -->
+      
       <view class='article-item'>
         <view class='article-head'>
           <image class='article-head-avatar' src='{{article.avatar}}'></image>
@@ -83,10 +81,10 @@
           <text class='article-footer-text'>{{article.view}}</text> 
         </view>
       </view>
-      -->
-      <view catchtap='tapArticleItem' data-article-id='{{article.articleId}}'>
+
+      <!-- <view catchtap='tapArticleItem' data-article-id='{{article.articleId}}'>
       <template is="articleItem" data="{{...article}}"/>
       </view>
     </block>
   </view>      
-</view>
+</view> -->
