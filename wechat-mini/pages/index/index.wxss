@@ -1,5 +1,5 @@
 /**index.wxss**/
-.page{
+page{
   background-color: #fabda1;
 }
 .userinfo {
@@ -22,6 +22,6 @@
 .usermotto {
   margin-top: 400rpx;
   border: 2rpx solid #333;
-  padding: 20rpx;
+  padding:20rpx;
   border-radius: 10rpx;
 }
