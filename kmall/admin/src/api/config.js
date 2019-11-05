@@ -2,10 +2,10 @@
 * @Author: Chris
 * @Date:   2019-10-28 14:39:49
 * @Last Modified by:   Chris
-* @Last Modified time: 2019-10-29 13:13:26
+* @Last Modified time: 2019-10-29 14:35:38
 */
 export const SERVER = 'http://127.0.0.1:3000'
-
+export const UPLOAD_PRODUCT_IMAGE = SERVER + '/products/images'
 
 export const API_CONFIG = {
 	login: 							['/sessions/users','post'],

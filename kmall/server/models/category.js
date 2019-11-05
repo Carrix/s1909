@@ -26,9 +26,10 @@ const CategorySchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-}, {
-    timestamps: true
-});
+}, 
+    {
+        timestamps: true
+    });
 
 CategorySchema.statics.getPaginationCategories = function(page=1, query = {}) {
     return new Promise((resolve, reject) => {

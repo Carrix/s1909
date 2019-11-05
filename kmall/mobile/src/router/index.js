@@ -1,9 +1,4 @@
-/*
-* @Author: Chris
-* @Date:   2019-10-30 14:41:13
-* @Last Modified by:   Chris
-* @Last Modified time: 2019-10-30 15:55:27
-*/
+
 //1.引入模块
 import Vue from "vue"
 import VueRouter from "vue-router"
@@ -19,10 +14,10 @@ Vue.use(VueRouter)
 
 //4.导出路由对象
 export default new VueRouter({
-	routes:[
-		{path:"/home",component:Home},
-		{path:"/cart",component:Cart},
-		{path:"/me",component:Me},
-		{path:"/",redirect:"/home"},
-	]
+    routes:[
+        {path:"/home",component:Home},
+        {path:"/cart",component:Cart},
+        {path:"/me",component:Me},
+        {path:"/",redirect:"/home"},
+    ]
 })

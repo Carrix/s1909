@@ -1,5 +1,10 @@
-module.exports = {
-  presets: [
-    '@vue/cli-plugin-babel/preset'
-  ]
-}
+export const presets = [
+  '@vue/app'
+];
+export const plugins = [
+  ['import', {
+    libraryName: 'vant',
+    libraryDirectory: 'es',
+    style: true
+  }, 'vant']
+];
