@@ -3,12 +3,12 @@
 
 const express = require('express')
 
-const multer  = require('multer')
-const upload = multer({ dest: 'public/uploads/' })
+// const multer  = require('multer')
+// const upload = multer({ dest: 'public/uploads/' })
 
 const ArticleModel = require('../models/article.js')
 const CategoryModel = require('../models/category.js')
-const pagination = require('../util/pagination.js')
+// const pagination = require('../util/pagination.js')
 
 const router = express.Router()
 //权限验证
