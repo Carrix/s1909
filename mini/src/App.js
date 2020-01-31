@@ -2,7 +2,8 @@ import React, { Component,Fragment } from 'react'
 import {
 	TodoHeader,
 	TodoInput,
-	TodoList
+	TodoList,
+	Like
 } from './components'
 
 export default class App extends Component{
@@ -35,6 +36,7 @@ export default class App extends Component{
 				</TodoHeader>
 				<TodoInput />
 				<TodoList todos={this.state.todos} />
+				<Like />
 			</Fragment>
 		)
 	}
