@@ -26,6 +26,26 @@ export default class App extends Component{
 			}]
 		}
 	}
+	addTodo = (todoTitle) => {
+		console.log(todoTitle)
+	// 	this.setState({
+	// 		todos:this.state.todos.concat({
+	// 			id:Math.random(),
+	// 			title:todoTitle,
+	// 			isCompleted:false
+	// 		})
+	// 	})
+	// const newTodos = this.state.todos.slice()
+	const newTodos = [...this.state.todos]
+	newTodos.push({
+		id:Math.random(),
+		title:todoTitle,
+		isCompleted:false
+	})
+	this.setState({
+		todos:newTodos
+	})
+}
 	render(){
 		return (
 			<Fragment>
@@ -34,7 +54,9 @@ export default class App extends Component{
 				>
 					{this.state.title}
 				</TodoHeader>
-				<TodoInput />
+				<TodoInput 
+					addTodo={this.addTodo}
+				/>
 				<TodoList todos={this.state.todos} />
 				<Like />
 			</Fragment>
