@@ -37,6 +37,7 @@ export default class App extends Component{
 	// 	})
 	// const newTodos = this.state.todos.slice()
 	const newTodos = [...this.state.todos]
+	
 	newTodos.push({
 		id:Math.random(),
 		title:todoTitle,
