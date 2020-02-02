@@ -16,7 +16,6 @@ export default class App extends Component{
 			isLoading:false
 		}
 	}
-
 	getData = () =>{
 		this.setState({
 			isLoading:true
