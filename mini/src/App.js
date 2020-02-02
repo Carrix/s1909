@@ -7,9 +7,9 @@ import {
 } from './components'
 
 export default class App extends Component{
-	// state = {
-	// 	title:'待办事项列表'
-	// }
+	state = {
+		title:'待办事项列表'
+	}
 	constructor(){
 		super()
 		this.state = {
@@ -75,7 +75,7 @@ onCompletedChange = (id) => {
 				/>
 				<TodoList
 				 todos={this.state.todos}
-				 // onCompletedChange={this.onCompletedChange} 
+				 onCompletedChange={this.onCompletedChange} 
 				/>
 				<Like />
 			</Fragment>
