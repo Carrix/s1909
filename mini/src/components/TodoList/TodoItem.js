@@ -2,7 +2,7 @@
 * @Author: Carrix
 * @Date:   2020-01-31 16:50:02
 * @Last Modified by:   Carrix
-* @Last Modified time: 2020-02-02 13:20:52
+* @Last Modified time: 2020-02-02 15:37:02
 */
 import React,{ Component } from 'react'
 const noop = () => {}
@@ -42,11 +42,11 @@ export default class TodoItem extends Component {
 		} = this.props
 		onCompletedChange(id)
 	}
-	shouldComponentUpdate (nextProps,nextState) {
-		return nextProps.isCompleted !== this.props.isCompleted
-	}
+	// shouldComponentUpdate (nextProps,nextState) {
+	// 	return nextProps.isCompleted !== this.props.isCompleted
+	// }
 	render() {
-		console.log('TodoItem {this.props.title} render')
+		console.log(`TodoItem ${this.props.title} render`)
 		const {
 			isCompleted,
 			title

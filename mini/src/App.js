@@ -5,56 +5,66 @@ import {
 	TodoList,
 	Like
 } from './components'
-
+import { getTodos } from './services'
 export default class App extends Component{
-	state = {
-		title:'待办事项列表'
-	}
 	constructor(){
 		super()
 		this.state = {
 			title:'待办事项列表',
-			desc:'今日事今日毕',
-			todos:[{
-				id:1,
-				title:'吃饭',
-				isCompleted:true
-			},{
-				id:2,
-				title:'睡觉',
-				isCompleted:false
-			}]
+			desc:'今日事,今日毕',
+			todos:[],
+			isLoading:false
 		}
 	}
+
+	getData = () =>{
+		this.setState({
+			isLoading:true
+		})
+			getTodos()
+			.then(resp =>{
+				console.log(resp)
+				if(resp.status === 200){
+					this.setState({
+						todos:resp.data
+					})
+				}else{
+					//处理错误
+				}
+			})
+			.catch(err =>{
+				console.log(err)
+			})
+			.finally(()=>{
+				this.setState({
+					isLoading:false
+				})
+			})
+	}
+
+	componentDidMount (){
+		this.getData()
+	}
+
 	addTodo = (todoTitle) => {
-		console.log(todoTitle)
-	// 	this.setState({
-	// 		todos:this.state.todos.concat({
-	// 			id:Math.random(),
-	// 			title:todoTitle,
-	// 			isCompleted:false
-	// 		})
-	// 	})
-	// const newTodos = this.state.todos.slice()
 	const newTodos = [...this.state.todos]
-	
 	newTodos.push({
 		id:Math.random(),
 		title:todoTitle,
-		isCompleted:false
+		completed:false
 	})
 	this.setState({
 		todos:newTodos
 	})
+	//先post ->
 }
 
 onCompletedChange = (id) => {
-	console.log('onCompletedChange',id)
 	this.setState((prevState)=>{
 		return {
-			todos:this.state.todos.map(todo =>{
+			todos:prevState.todos.map(todo =>{
 				if(todo.id === id) {
-					todo.isCompleted = !todo.isCompleted 
+					todo.completed = !todo.completed 
 				}
 				return todo
 			})
@@ -73,28 +83,18 @@ onCompletedChange = (id) => {
 				<TodoInput 
 					addTodo={this.addTodo}
 				/>
-				<TodoList
-				 todos={this.state.todos}
-				 onCompletedChange={this.onCompletedChange} 
-				/>
+				{
+					this.state.isLoading 
+					?
+					<div>loading</div>
+					: 
+					<TodoList 
+						todos={this.state.todos}
+						onCompletedChange={this.onCompletedChange}					
+					/>
+				}
 				<Like />
 			</Fragment>
 		)
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
