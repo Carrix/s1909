@@ -2,7 +2,7 @@
 * @Author: Carrix
 * @Date:   2020-01-15 21:39:15
 * @Last Modified by:   Carrix
-* @Last Modified time: 2020-01-21 18:14:50
+* @Last Modified time: 2020-02-03 12:41:15
 */
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -20,7 +20,7 @@ module.exports = {
 				test:/\.css$/,
 				use:[
 					MiniCssExtractPlugin.loader,
-					'css-loader'
+					'css-loader',
 					'postcss-loader'
 				],
 			},{
