@@ -10,4 +10,3 @@
 
 # 基于React+Webpack+mongodb的项目
 >#### 项目包管理
-- Yarn
