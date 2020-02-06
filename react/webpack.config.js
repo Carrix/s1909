@@ -2,11 +2,12 @@
 * @Author: Carrix
 * @Date:   2020-01-15 21:39:15
 * @Last Modified by:   Carrix
-* @Last Modified time: 2020-02-03 12:41:15
+* @Last Modified time: 2020-02-06 19:29:08
 */
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
 module.exports = {
     mode:'development',//指定环境
 	entry:'./src/index.js',//入口
