@@ -2,10 +2,11 @@
 * @Author: Carrix
 * @Date:   2020-01-26 14:04:13
 * @Last Modified by:   Carrix
-* @Last Modified time: 2020-02-03 12:46:44
+* @Last Modified time: 2020-02-06 19:24:07
 */
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+
 class TodoItem extends Component{
 	constructor(props){
 		super(props);
