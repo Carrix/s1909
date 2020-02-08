@@ -2,7 +2,7 @@
 * @Author: Carrix
 * @Date:   2020-01-15 21:39:15
 * @Last Modified by:   Carrix
-* @Last Modified time: 2020-02-06 19:29:08
+* @Last Modified time: 2020-02-07 11:19:33
 */
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -27,7 +27,7 @@ module.exports = {
 			},{
 				test:/\.less$/,
 				use:[
-				]
+				]　
 			}
 		],
 	},
