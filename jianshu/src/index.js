@@ -6,4 +6,3 @@ import './statics/iconfont/iconfont';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
-
